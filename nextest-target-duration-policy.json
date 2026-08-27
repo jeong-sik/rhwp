@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "fallback_seconds": 1,
+  "measurement_sources": {
+    "b": {
+      "run_id": "33064128254",
+      "ref": "refs/heads/devel",
+      "sha": "2166f4065206f158b8cc0f98d9731faf00345e4b"
+    },
+    "c": {
+      "run_id": "33064128254",
+      "ref": "refs/heads/devel",
+      "sha": "2166f4065206f158b8cc0f98d9731faf00345e4b"
+    }
+  },
+  "targets": {}
+}
