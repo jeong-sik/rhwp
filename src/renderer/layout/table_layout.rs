@@ -14836,8 +14836,21 @@ impl LayoutEngine {
                     self.dpi,
                 )
             };
+            // [#6670] 저장 lineseg 한 줄짜리 글자 셀이 그 줄 상자로 선언 안쪽을 넘어도
+            // 한/글은 행을 키우지 않는다 — HeightMeasurer 와 같은 술어
+            // (composer::stored_single_line_text_cell_overflows_declared 주석 참조).
+            let stored_single_line_overflow = cell_h_px > 0.0
+                && self.profile.get().hwp5_stored_pagination_layout()
+                && !table.common.treat_as_char
+                && cell.text_direction == 0
+                && content + pad_cell > cell_h_px + 0.5
+                && crate::renderer::composer::stored_single_line_text_cell_overflows_declared(
+                    cell,
+                    cell_h_px - pad_top - pad_bottom,
+                    self.dpi,
+                );
             let h = if is_whole_row {
-                if no_ls_label_cell {
+                if no_ls_label_cell || stored_single_line_overflow {
                     cell_h_px
                 } else {
                     // HeightMeasurer required_height + row 단계 1 cell.height max 정합.

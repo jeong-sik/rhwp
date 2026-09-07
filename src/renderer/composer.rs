@@ -1788,6 +1788,48 @@ pub(crate) fn no_ls_short_label_cell(
     cell_inner_height >= em_sum
 }
 
+/// [#6670] 저장 LINE_SEG 가 있는 **한 줄짜리 글자 셀**이 그 줄 상자로 선언 셀
+/// 안쪽 높이를 넘어도 한/글은 행을 키우지 않는다 — 선언 높이를 믿는다.
+///
+/// 한/글은 자기가 저장한 셀 높이를 열 때 다시 재지 않는다. 2025 행정업무운영
+/// 편람 s10 pi=22 r1 c3 `"10."`: 25pt 글자(저장 lineseg vertsize 2500 = 33.3px)가
+/// 선언 2349HU(31.3px, 위·아래 여백 566 → 안쪽 16.2px) 셀에 들어 있고, 한/글
+/// 2020·2024 PDF 는 행을 31.3px 로 그리며 글자가 아래 괘선을 3px 넘어 나온다
+/// (괘선 211.8→243.1, 글자 bbox 213.9→246.3). 다음 문단의 저장 vpos 도 표 선언
+/// 높이 + 바깥 아래 여백과 정확히 같다(20449 = 19883 + 566) — 행이 안 커졌다는
+/// 한/글 자신의 증언이다. samples 30문서에서 다음 문단 vpos 가 "선언 높이
+/// 그대로"인 자리차지 표 158개의 2405 셀 중 한 줄짜리 저장 셀 501개가 이
+/// 모양이다(hwpctl_ParameterSetID 249·행정업무운영 편람 224·정책연구 14…).
+/// rhwp 는 줄 상자 + 여백으로 행을 48.4px 로 키워(+17.1) 그 아래 흐름을 통째로
+/// 내렸다.
+///
+/// #2146(`no_ls_short_label_cell`)의 저장 줄 짝이다 — 그쪽은 저장 줄이 **없는**
+/// 라벨 셀. 여러 줄 셀은 문서마다 셀 안 vpos 기준(문단 상대/셀 누적/표 누적)이
+/// 달라 같은 증거를 세우지 못했으므로 여기서는 받지 않는다. 개체가 있는
+/// 문단도 제외한다(#6280/#6194 개체 흡수 갈래가 따로 다룬다).
+pub(crate) fn stored_single_line_text_cell_overflows_declared(
+    cell: &crate::model::table::Cell,
+    cell_inner_height: f64,
+    dpi: f64,
+) -> bool {
+    if cell_inner_height <= 0.0 || cell.paragraphs.len() != 1 {
+        return false;
+    }
+    let para = &cell.paragraphs[0];
+    if !para.controls.is_empty() || para.text.trim().is_empty() {
+        return false;
+    }
+    let mut stored = para
+        .line_segs
+        .iter()
+        .filter(|seg| seg.tag & crate::model::paragraph::LineSeg::TAG_IMPLEMENTATION_PROPERTY == 0);
+    let (Some(seg), None) = (stored.next(), stored.next()) else {
+        return false;
+    };
+    seg.line_height > 0
+        && crate::renderer::hwpunit_to_px(seg.line_height, dpi) > cell_inner_height + 0.5
+}
+
 /// [#2291/#2287] 부실 저장 예외 — 기계생성 문서는 다줄 문단에도 저장 lineseg 를
 /// 1개만 남기는 관례가 있어(연결맵 s5 244×10 r183 c8: 76자 문단 ls 1개 → 1줄
 /// 렌더 + "…실천 계획 세" 절단), 셀 재래핑의 "저장 lineseg 신뢰" 가드가 이런

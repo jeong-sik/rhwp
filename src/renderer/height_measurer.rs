@@ -2331,6 +2331,27 @@ impl HeightMeasurer {
                 } else {
                     required_height
                 };
+                // [#6670] 저장 lineseg 한 줄짜리 글자 셀이 그 줄 상자로 선언 안쪽을
+                // 넘어도 한/글은 행을 키우지 않는다 — 판정과 근거는
+                // composer::stored_single_line_text_cell_overflows_declared 주석 참조.
+                // 렌더(table_layout resolve_row_heights)와 같은 술어를 써서 측정·렌더
+                // 행높이가 함께 선언으로 간다.
+                let required_height = if cell_h_px > 0.0
+                    && depth == 0
+                    && self.is_native_hwp5
+                    && !table.common.treat_as_char
+                    && cell.text_direction == 0
+                    && !has_nested_table_in_cell
+                    && required_height > cell_h_px + 0.5
+                    && crate::renderer::composer::stored_single_line_text_cell_overflows_declared(
+                        cell,
+                        cell_h_px - pad_top - pad_bottom,
+                        self.dpi,
+                    ) {
+                    cell_h_px
+                } else {
+                    required_height
+                };
                 // [#2097 진단] 셀별 선언/측정/trailing 분해 — 동작 불변.
                 if std::env::var("RHWP_DIAG_ROWH").is_ok() && depth == 0 {
                     let all_stored = !cell.paragraphs.is_empty()
