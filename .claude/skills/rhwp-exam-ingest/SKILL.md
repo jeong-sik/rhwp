@@ -1,9 +1,6 @@
 ---
 name: rhwp-exam-ingest
-description: >-
-  PDF·이미지·Markdown·DOCX 시험문제 자료를 HWPX 시험지로 변환한다.
-  문제·지문·선택지와 이미지 위치를 읽고, 제공된 helper와 ingest 스키마로 파일을 조립할 때 사용한다.
-  "HWPX로 만들어줘", "한글 시험지로 변환", "exam ingest", "/rhwp-exam-ingest", "시험문제 변환" 요청에 적용한다.
+description: 'PDF·이미지·Markdown·DOCX 시험문제 자료를 HWPX 시험지로 변환한다. 문제·지문·선택지와 이미지 위치를 읽고, 제공된 helper와 ingest 스키마로 파일을 조립할 때 사용한다. "HWPX로 만들어줘", "한글 시험지로 변환", "exam ingest", "/rhwp-exam-ingest", "시험문제 변환" 요청에 적용한다.'
 ---
 
 # rhwp-exam-ingest — 시험지 → HWPX 변환 Skill
