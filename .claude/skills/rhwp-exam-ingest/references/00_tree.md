@@ -97,7 +97,7 @@ ingest.json 준비됨
 | 적분·행렬 수식 | bbox crop → image 블록 | LaTeX 필드를 ingest 에 추가 |
 | 3단 병합 표 | 표 전체를 Picture | Table IR 발명 |
 | 손글씨 메모 | 무시하거나 이미지 | OCR 엔진 호출 |
-| Picture 가 한컴에서 안 보임 | 한계 고지 (#182) | writer 를 이 스킬에서 고침 |
+| Picture 가 한컴에서 안 보임 | 이미지 파일·참조·실제 표시를 대조 | writer 를 이 스킬에서 고침 |
 
 ## 이 트리가 고르지 않는 것
 

@@ -110,7 +110,7 @@
     {
       "id": "I014",
       "utterance": "문장 가운데 작은 도형",
-      "command": "placement inline, #182 고지",
+      "command": "placement inline, 이미지 표시 확인",
       "reference": "09_media_placement.md",
       "stop": "F18",
       "notGym": true
@@ -238,7 +238,7 @@
     {
       "id": "I030",
       "utterance": "한컴에서 그림이 안 보여",
-      "command": "#182 한계 고지. writer 수정 금지",
+      "command": "이미지 포함·참조·표시를 대조하고 원인을 확인",
       "reference": "15_known_limits.md",
       "stop": "F18",
       "notGym": true

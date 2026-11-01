@@ -4,9 +4,9 @@
   "limits": [
     {
       "id": "L-picture",
-      "title": "Picture 직렬화",
+      "title": "이미지 포함과 표시 확인",
       "issue": 182,
-      "action": "텍스트 우선, 고지",
+      "action": "이미지 포함·참조·표시 확인",
       "not": "writer 수정"
     },
     {
