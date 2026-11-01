@@ -940,7 +940,7 @@ def matrices() -> dict:
                     "when": "문장 중간",
                     "stemOrder": ["text+image"],
                     "common": False,
-                    "limit": "Picture inline #182",
+                    "limit": "inline 이미지 표시 확인",
                 },
             ],
         },
@@ -1029,9 +1029,9 @@ def matrices() -> dict:
             "limits": [
                 {
                     "id": "L-picture",
-                    "title": "Picture 직렬화",
+                    "title": "이미지 포함과 표시 확인",
                     "issue": 182,
-                    "action": "텍스트 우선, 고지",
+                    "action": "이미지 포함·참조·표시 확인",
                     "not": "writer 수정",
                 },
                 {
@@ -1254,7 +1254,7 @@ INTENTS_RAW = [
     ("I011", "그래프를 지문과 선택지 사이에", "placement between", "09_media_placement.md", "F14"),
     ("I012", "그림이 발문보다 위", "placement above + 블록 순서", "09_media_placement.md", "F14"),
     ("I013", "그림이 선택지 다음", "placement below", "09_media_placement.md", "F14"),
-    ("I014", "문장 가운데 작은 도형", "placement inline, #182 고지", "09_media_placement.md", "F18"),
+    ("I014", "문장 가운데 작은 도형", "placement inline, 이미지 표시 확인", "09_media_placement.md", "F18"),
     ("I015", "공유 지문 1~3", "passages + passage_ref", "07_passages_questions.md", "F19"),
     ("I016", "<보기> 상자 살려줘", "stem_blocks boxed", "08_stem_blocks_boxed.md", "F12"),
     ("I017", "번호가 이미 지문에 있어", "auto_number false", "10_auto_number.md", "F13"),
@@ -1270,7 +1270,7 @@ INTENTS_RAW = [
     ("I027", "흐린 스캔인데", "DPI 400 또는 원본 재요청", "02_pdf_to_pngs.md", "F10"),
     ("I028", "한 페이지에 문제 40개", "사분면 분할 Vision", "00_tree.md", "F09"),
     ("I029", "산출 확인은?", "export-text / dump / unzip -l", "18_verify_gate.md", "F19"),
-    ("I030", "한컴에서 그림이 안 보여", "#182 한계 고지. writer 수정 금지", "15_known_limits.md", "F18"),
+    ("I030", "한컴에서 그림이 안 보여", "이미지 포함·참조·표시를 대조하고 원인을 확인", "15_known_limits.md", "F18"),
 ]
 
 
@@ -1429,14 +1429,14 @@ EXAMPLES_META = [
     ("07_media_between.md", "placement between", "between", "P-between"),
     ("08_media_above.md", "placement above", "above", "P-above"),
     ("09_media_below.md", "placement below", "below", "P-below"),
-    ("10_media_inline.md", "placement inline", "inline + #182", "P-inline"),
+    ("10_media_inline.md", "placement inline", "inline 이미지 표시 확인", "P-inline"),
     ("11_auto_number_true.md", "auto_number true", "prefix 자동", "AN-true"),
     ("12_auto_number_false.md", "auto_number false", "원본 번호 유지", "AN-false"),
     ("13_crop_bbox.md", "bbox crop dry-run", "crop_image.sh --dry-run", "T08"),
     ("14_missing_poppler.md", "poppler 없음", "DEP_MISS_POPPLER / magick", "T05"),
     ("15_missing_imagemagick.md", "ImageMagick 없음", "DEP_MISS_IMAGEMAGICK", "F02"),
     ("16_missing_python_docx.md", "python-docx 없음", "fallback exit 0", "T07"),
-    ("17_picture_serialization_limit.md", "Picture #182", "텍스트 우선 고지", "L-picture"),
+    ("17_picture_serialization_limit.md", "이미지 표시 확인", "이미지 포함·참조·표시 확인", "L-picture"),
     ("18_equation_as_image.md", "수식은 이미지", "crop 적분", "L-equation"),
     ("19_table_as_picture.md", "표는 그림", "표 bbox", "L-table"),
     ("20_build_from_ingest.md", "build-from-ingest -o", "--media-dir -o", "F15"),
@@ -1503,7 +1503,7 @@ def example_body(fname, title, action, xref) -> str:
         "",
         "## 한계",
         "",
-        "Picture #182, 수식 이미지, 표 Picture. 새 CLI / exam_paper 수정 없음.",
+        "그림의 포함·참조·표시를 확인한다. 수식·표는 이 ingest 스키마가 지원하는 그림으로 옮긴다. 빌더 구현은 변경하지 않는다.",
         "",
     ]
     return "\n".join(lines) + "\n"

@@ -20,7 +20,7 @@
 | I011 | 그래프를 지문과 선택지 사이에 | placement between | 09_media_placement.md | F14 |
 | I012 | 그림이 발문보다 위 | placement above + 블록 순서 | 09_media_placement.md | F14 |
 | I013 | 그림이 선택지 다음 | placement below | 09_media_placement.md | F14 |
-| I014 | 문장 가운데 작은 도형 | placement inline, #182 고지 | 09_media_placement.md | F18 |
+| I014 | 문장 가운데 작은 도형 | placement inline, 이미지 표시 확인 | 09_media_placement.md | F18 |
 | I015 | 공유 지문 1~3 | passages + passage_ref | 07_passages_questions.md | F19 |
 | I016 | <보기> 상자 살려줘 | stem_blocks boxed | 08_stem_blocks_boxed.md | F12 |
 | I017 | 번호가 이미 지문에 있어 | auto_number false | 10_auto_number.md | F13 |
@@ -36,7 +36,7 @@
 | I027 | 흐린 스캔인데 | DPI 400 또는 원본 재요청 | 02_pdf_to_pngs.md | F10 |
 | I028 | 한 페이지에 문제 40개 | 사분면 분할 Vision | 00_tree.md | F09 |
 | I029 | 산출 확인은? | export-text / dump / unzip -l | 18_verify_gate.md | F19 |
-| I030 | 한컴에서 그림이 안 보여 | #182 한계 고지. writer 수정 금지 | 15_known_limits.md | F18 |
+| I030 | 한컴에서 그림이 안 보여 | 이미지 포함·참조·표시를 대조하고 원인을 확인 | 15_known_limits.md | F18 |
 | I031 | 국어 지문 HWPX로 | 사다리 동일, 과목은 Vision 힌트일 뿐 | 07_passages_questions.md | F19 |
 | I032 | 국어 지문 한글 시험지로 | 사다리 동일, 과목은 Vision 힌트일 뿐 | 07_passages_questions.md | F19 |
 | I033 | 국어 지문 ingest 해줘 | 사다리 동일, 과목은 Vision 힌트일 뿐 | 07_passages_questions.md | F19 |
