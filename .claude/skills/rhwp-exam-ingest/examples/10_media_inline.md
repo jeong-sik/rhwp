@@ -1,7 +1,7 @@
 # 예제 10_media_inline — placement inline
 
 이 워크스루는 gym 과제가 아니다. 기존 helper 와 `rhwp build-from-ingest` 만 쓴다.
-교차: `P-inline`. 동작: inline + #182.
+교차: `P-inline`. 동작: inline 이미지 표시 확인.
 
 ## 입력
 
@@ -32,4 +32,4 @@ rhwp dump "$OUT" > "$TMP/dump.txt"
 
 ## 한계
 
-Picture #182, 수식 이미지, 표 Picture. 새 CLI / exam_paper 수정 없음.
+그림의 포함·참조·표시를 확인한다. 수식·표는 이 ingest 스키마가 지원하는 그림으로 옮긴다. 빌더 구현은 변경하지 않는다.
