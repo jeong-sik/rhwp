@@ -43,8 +43,8 @@ unzip -l output/exam/2024_국어.hwpx | head
 - export-text 에 각 `stem` 과 `choices[].text` 가 보이는지.
 - `"N. N."` 중복 번호가 없는지 (`auto_number` 사고).
 - 공유 지문이 한 번만 나오는지.
-- media 가 있으면 `BinData/` 또는 dump 의 Picture 흔적. 없어도
-  #182 한계일 수 있다. 텍스트 게이트를 우선한다.
+- media가 있으면 이미지 파일과 Picture 참조를 모두 확인한다.
+  빠졌다면 입력 경로와 출력 참조를 조사하고, 텍스트만으로 성공 처리하지 않는다.
 
 `export-svg` 는 smoke 다. 원본 PDF 와 픽셀 일치를 증명하지 않는다.
 

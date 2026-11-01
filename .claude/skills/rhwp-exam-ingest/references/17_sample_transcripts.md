@@ -25,7 +25,7 @@
 3. `crop_image.sh desk.jpg 240 410 980 620 $MEDIA/img/q1.png`
 4. ingest: placement between, auto_number true
 5. `build-from-ingest --media-dir $MEDIA -o output/exam/graph.hwpx`
-6. 고지: #182 로 한컴에서 그래프가 비어 보일 수 있음
+6. 확인: 그래프 파일과 문서 참조를 대조하고, 한컴 표시를 확인하지 못했다면 미검증으로 보고
 
 ## T03 MD + 이미지 ref
 
